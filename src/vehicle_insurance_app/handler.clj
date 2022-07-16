@@ -5,36 +5,43 @@
             [vehicle-insurance-app.controller.controller :as controller]
             [vehicle-insurance-app.entity.insured :as insured]
             [vehicle-insurance-app.entity.vehicle :as vehicle]
+            [vehicle-insurance-app.entity.materialdamage :as materialdamage]
             [ring.util.response :as resp]))
 
 (defroutes public-routes
   (GET "/" [] (controller/home))
-  
+
   (GET "/insureds" [] (controller/insureds-page))
-  
+
   (GET "/add-insured" [] (controller/add-inusred-page))
- 
+
   (POST "/add-insured/insertInsured" [& params]
     (do (insured/insertInsured params)
         (resp/redirect "/insureds")))
-  
+
   (GET "/updateInsured/:id/updateInsured" [id]
     (controller/update-insured-page id))
   (POST "/updateInsured/:id/updateInsured" [& params]
     (do (insured/updateInsured (:id params) params)
         (resp/redirect "/insureds")))
-  
+
   (GET "/vehicles" [] (controller/vehicles-page))
   (GET "/add-vehicle" [] (controller/add-vehicle-page))
   (POST "/add-vehicle/insertVehicle" [& params]
     (do (vehicle/insertVehicle params)
         (resp/redirect "/vehicles")))
-  
+
   (GET "/updateVehicle/:id/updateVehicle" [id]
     (controller/update-vehicle-page id))
   (POST "/updateVehicle/:id/updateVehicle" [& params]
     (do (vehicle/updateVehicle (:id params) params)
-        (resp/redirect "/vehicles"))))
+        (resp/redirect "/vehicles")))
+  
+  (GET "/materialDamages" [] (controller/material-damages-page))
+  (GET "/add-material-damage" [] (controller/add-material-damage-page))
+  (POST "/add-material-damage/insertMaterialDamage" [& params]
+    (do (materialdamage/insertMaterialDamage params)
+        (resp/redirect "/materialDamages"))))
 
 (defroutes protected-routes)
 
