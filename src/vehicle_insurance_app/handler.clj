@@ -4,6 +4,7 @@
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [vehicle-insurance-app.controller.controller :as controller]
             [vehicle-insurance-app.entity.insured :as insured]
+            [vehicle-insurance-app.entity.vehicle :as vehicle]
             [ring.util.response :as resp]))
 
 (defroutes public-routes
@@ -21,7 +22,19 @@
     (controller/update-insured-page id))
   (POST "/updateInsured/:id/updateInsured" [& params]
     (do (insured/updateInsured (:id params) params)
-        (resp/redirect "/insureds"))))
+        (resp/redirect "/insureds")))
+  
+  (GET "/vehicles" [] (controller/vehicles-page))
+  (GET "/add-vehicle" [] (controller/add-vehicle-page))
+  (POST "/add-vehicle/insertVehicle" [& params]
+    (do (vehicle/insertVehicle params)
+        (resp/redirect "/vehicles")))
+  
+  (GET "/updateVehicle/:id/updateVehicle" [id]
+    (controller/update-vehicle-page id))
+  (POST "/updateVehicle/:id/updateVehicle" [& params]
+    (do (vehicle/updateVehicle (:id params) params)
+        (resp/redirect "/vehicles"))))
 
 (defroutes protected-routes)
 
