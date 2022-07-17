@@ -56,4 +56,4 @@
 
 (defn add-material-damage-item-page [id]
   (render-template "add-material-damage-item-page" {:material_damages (material-damages-entity/get id)
-                                               :damage_types (damage-type-entity/allDamageTypes)}))
+                                                    :damage_types (damage-type-entity/allDamageTypes)}))
