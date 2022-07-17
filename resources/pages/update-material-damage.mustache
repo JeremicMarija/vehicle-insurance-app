@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Web App Vehicle Insurance</title>
@@ -37,37 +36,38 @@
     </nav>
     <div class="container mt-3">
      <div class="row">
-      <div class="col">
-       <p class="h3 text-success fw-bold">Material Damages <a href="/add-material-damage" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</a></p>
-      </div>
+       <div class="col">
+         <p class="h3 text-success fw-bold">Update Material Damage</p>
+       </div>
      </div>
-     <div class="row mt-4">
-      <div class="col">
-       <table class="table table-hover text-center table-striped shadow-lg">
-        <thead class="bg-success text-white">
-         <tr>
-          <th>Material Damage Id</th>
-          <th>Entry Date</th>
-          <th>Type Of Damage</th>
-          <th>Vehicle</th>
-          <th>Action</th>
-         </tr>
-        </thead>
-        <tbody>
-         {{#material_damages}}
-         <tr>
-          <td>{{id}}</td>
-          <td>{{entry_date}}</th>
-          <td>{{type_of_damage}}</td>
-          <td>{{registration_number}}</td>
-          <td>
-           <a href="/updateMaterialDamage/{{id}}/updateMaterialDamage" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-          </td>
-         </tr>
-         {{/material_damages}}
-        </tbody>
+    </div>
+    <div class="container mt-3">
+     <div class="row">
+      <div class="col-md-4">
+       <form action="/updateMaterialDamage/{{material_damages.id}}/updateMaterialDamage" method="POST">
+        <div class="mb-2">
+         <input required type="date" class="form-control" placeholder="Entry Date" name="entry_date" value="{{material_damages.entry_date}}">
+        </div>
+        <div class="mb-2">
+         <select required name="type_of_damage" class="form-control" >
+          <option value="{{material_damages.type_of_damage}}">{{material_damages.type_of_damage}}</option>
+          <option value="TOTAL_DAMAGE">TOTAL_DAMAGE</option>
+          <option value="PARTIAL_DAMAGE">PARTIAL_DAMAGE</option>
+         </select>
+        </div>
+        <div class="mb-2">
+         <input hidden type="text" id="vehicle_id" class="form-control" name="material_damages.vehicle_id" value="{{material_damages.vehicle_id}}">
 
-       </table>
+         <select required id="id" name="vehicle_id" class="form-control" >
+          {{#vehicles}}
+          {{id}}
+          <option {{selected = material_damages.vehicle_id === id}} value="{{id}}">{{brand}} {{model}} {{registration_number}}</option>
+          {{/vehicles}}
+         </select>
+        </div>
+        <button type="submit" class="btn btn-success">Update</button>
+       </form>
+
       </div>
      </div>
     </div>
@@ -76,5 +76,6 @@
         <small>Copyright &copy; Marija Jeremic</small>
       </div>
     </footer>
+    <script src="/js/updateMaterialDamage.js"></script>
   </body>
 </html>
