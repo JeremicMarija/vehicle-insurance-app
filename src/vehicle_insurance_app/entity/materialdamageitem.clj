@@ -16,3 +16,10 @@
                 LEFT JOIN material_damages ON material_damage_items.materialdamage_id = material_damages.id
                 LEFT JOIN damage_types ON material_damage_items.damagetype_id = damage_types.id
                 WHERE materialdamage_id = ?" id]))
+
+(defn get [id]
+  (first(jdbc/query mysql-db
+                    ["SELECT * FROM material_damage_items WHERE id = ?" id])))
+
+(defn insertMaterialDamageItem [params]
+  (jdbc/insert! mysql-db :material_damage_items params))

@@ -3,7 +3,8 @@
             [vehicle-insurance-app.entity.insured :as insured-entity]
             [vehicle-insurance-app.entity.vehicle :as vehicle-entity]
             [vehicle-insurance-app.entity.materialdamage :as material-damages-entity]
-            [vehicle-insurance-app.entity.materialdamageitem :as material-damage-items-entity]))
+            [vehicle-insurance-app.entity.materialdamageitem :as material-damage-items-entity]
+            [vehicle-insurance-app.entity.damagetype :as damage-type-entity]))
 
 (defn read-template [template-name]
   (slurp (clojure.java.io/resource
@@ -52,3 +53,7 @@
 (defn material-damage-items-page [id]
   (render-template "material-damage-items-page" {:material_damage_items (material-damage-items-entity/allMaterialDamageItems id)
                                                  :material_damages (material-damages-entity/get id)}))
+
+(defn add-material-damage-item-page [id]
+  (render-template "add-material-damage-item-page" {:material_damages (material-damages-entity/get id)
+                                               :damage_types (damage-type-entity/allDamageTypes)}))
