@@ -59,7 +59,7 @@
          <select required name="vehicle_id" class="form-control" >
           <option selected >Select Vehicle...</option>
           {{#vehicles}}
-          <option value="{{id}}">{{model}}</option>
+          <option value="{{id}}">{{model}} {{brand}} {{registration_number}}</option>
           {{/vehicles}}
          </select>
         </div>

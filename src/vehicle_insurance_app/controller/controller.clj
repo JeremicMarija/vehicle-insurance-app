@@ -43,3 +43,7 @@
 
 (defn add-material-damage-page []
  (render-template "add-material-damage" {:vehicles (vehicle-entity/allVehicles)}))
+
+(defn update-material-damage-page [id]
+  (render-template "update-material-damage" {:material-damages (material-damages-entity/get id)
+                                             :vehicles (vehicle-entity/allVehicles)}))

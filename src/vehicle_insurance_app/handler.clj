@@ -41,6 +41,12 @@
   (GET "/add-material-damage" [] (controller/add-material-damage-page))
   (POST "/add-material-damage/insertMaterialDamage" [& params]
     (do (materialdamage/insertMaterialDamage params)
+        (resp/redirect "/materialDamages")))
+  
+  (GET "/updateMaterialDamage/:id/updateMaterialDamage" [id]
+    (controller/update-material-damage-page id))
+  (POST "/updateMaterialDamage/:id/updateMaterialDamage" [& params]
+    (do (materialdamage/updateMaterialDamage (:id params) params)
         (resp/redirect "/materialDamages"))))
 
 (defroutes protected-routes)

@@ -20,3 +20,6 @@
 
 (defn insertMaterialDamage [params]
   (jdbc/insert! mysql-db :material_damages params))
+
+(defn updateMaterialDamage [id params]
+  (jdbc/update! mysql-db :material_damages params (sql/where {:id id})))
