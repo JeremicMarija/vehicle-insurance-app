@@ -6,6 +6,7 @@
             [vehicle-insurance-app.entity.insured :as insured]
             [vehicle-insurance-app.entity.vehicle :as vehicle]
             [vehicle-insurance-app.entity.materialdamage :as materialdamage]
+            [vehicle-insurance-app.entity.materialdamageitem :as materialdamageitem]
             [ring.util.response :as resp]))
 
 (defroutes public-routes
@@ -47,7 +48,10 @@
     (controller/update-material-damage-page id))
   (POST "/updateMaterialDamage/:id/updateMaterialDamage" [& params]
     (do (materialdamage/updateMaterialDamage (:id params) params)
-        (resp/redirect "/materialDamages"))))
+        (resp/redirect "/materialDamages")))
+  
+  (GET "/materialDamages/:id/materialDamageItems" [id]
+    (controller/material-damage-items-page id)))
 
 (defroutes protected-routes)
 

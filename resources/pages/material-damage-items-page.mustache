@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Web App Vehicle Insurance</title>
@@ -38,7 +37,9 @@
     <div class="container mt-3">
      <div class="row">
       <div class="col">
-       <p class="h3 text-success fw-bold">Material Damages <a href="/add-material-damage" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> New</a></p>
+       <p class="h3 text-success fw-bold">All Damage Items of Material Damage:</p>
+       <p class="hw text-success mb-0">Entry Date: <span class="fw-bold">{{material_damages.entry_date}}</span></p>
+       <p class="hw text-success mb-0">Type Of Damage: <span class="fw-bold">{{material_damages.type_of_damage}}</span></p>
       </div>
      </div>
      <div class="row mt-4">
@@ -46,31 +47,23 @@
        <table class="table table-hover text-center table-striped shadow-lg">
         <thead class="bg-success text-white">
          <tr>
-          <th>Material Damage Id</th>
-          <th>Entry Date</th>
-          <th>Type Of Damage</th>
-          <th>Vehicle</th>
-          <th>Action</th>
+          <th>Description</th>
+          <th>Estimated Price</th>
+          <th>Damage Type</th>
          </tr>
         </thead>
         <tbody>
-         {{#material_damages}}
+         {{#material_damage_items}}
          <tr>
-          <td>{{id}}</td>
-          <td>{{entry_date}}</th>
-          <td>{{type_of_damage}}</td>
-          <td>{{registration_number}}</td>
-          <td>
-           <a href="/updateMaterialDamage/{{id}}/updateMaterialDamage" class="btn btn-success btn-sm"><i class="fas fa-edit"></i></a>
-           <a href="/materialDamages/{{id}}/materialDamageItems" class="btn btn-success btn-sm">View Damage Items</a>
-           <a href="#" class="btn btn-success btn-sm">Add Damage Item</a>
-          </td>
+          <td>{{description}}</td>
+          <td>{{estimated_price}}</td>
+          <td>{{name}}</td>
          </tr>
-         {{/material_damages}}
+         {{/material_damage_items}}
         </tbody>
-
        </table>
       </div>
+
      </div>
     </div>
     <footer id="sticky-footer" class="bg-success text-white-50 fixed-bottom">

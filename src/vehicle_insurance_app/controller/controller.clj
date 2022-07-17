@@ -2,7 +2,8 @@
   (:require [clostache.parser :as clostache]
             [vehicle-insurance-app.entity.insured :as insured-entity]
             [vehicle-insurance-app.entity.vehicle :as vehicle-entity]
-            [vehicle-insurance-app.entity.materialdamage :as material-damages-entity]))
+            [vehicle-insurance-app.entity.materialdamage :as material-damages-entity]
+            [vehicle-insurance-app.entity.materialdamageitem :as material-damage-items-entity]))
 
 (defn read-template [template-name]
   (slurp (clojure.java.io/resource
@@ -47,3 +48,7 @@
 (defn update-material-damage-page [id]
   (render-template "update-material-damage" {:material_damages (material-damages-entity/get id)
                                              :vehicles (vehicle-entity/allVehicles)}))
+
+(defn material-damage-items-page [id]
+  (render-template "material-damage-items-page" {:material_damage_items (material-damage-items-entity/allMaterialDamageItems id)
+                                                 :material_damages (material-damages-entity/get id)}))
