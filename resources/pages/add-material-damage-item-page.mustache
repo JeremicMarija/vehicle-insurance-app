@@ -14,6 +14,12 @@
     <!-- Font Awesome -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Web App Vehicle Insurance</title>
+    <style>
+      body{
+        font-family: 'Poppins', sans-serif;
+        background-color: #f0fdf0;
+      }
+     </style>
   </head>
   <body>
     <nav class="navbar navbar-dark bg-success navbar-expand-sm">
@@ -52,7 +58,7 @@
          <input required type="number" class="form-control" placeholder="Estimated Price" name="estimated_price" value="{{#estimated_price}}{{estimated_price}}{{/estimated_price}}">
         </div>
         <div class="mb-2">
-         <input type="text" class="form-control" placeholder="materialDamage_id" name="materialdamage_id" value="{{#material_damages.id}}{{material_damages.id}}{{/material_damages.id}}">
+         <input hidden type="text" class="form-control" placeholder="materialDamage_id" name="materialdamage_id" value="{{#material_damages.id}}{{material_damages.id}}{{/material_damages.id}}">
         </div>
         <div class="mb-2">
          <select required name="damagetype_id" class="form-control" >
