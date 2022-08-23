@@ -1,4 +1,4 @@
-This Application was made in Clojure, html template is made in Mustache. For Clojure i used Clostache. For web application library i used Ring, Compojure is used for routing library for Ring. Database is MySql.
+This application is built in Clojure, the html template is built in Mustache. For Clojure it was used Clostache. For the web app library it was used Ring, Compojure is used to route the library for Ring. The database is MySQL.
 
 The application enables the entry of data on material damages that occurred on the insured vehicle. 
 The application keeps records of insured persons, their vehicles and material damages that occurred on those vehicles.
